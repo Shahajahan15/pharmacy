@@ -1,0 +1,58 @@
+public function collectionList()
+    {
+		$this->auth->restrict('Collection.Details.View');
+		//load library		
+        $this->load->library('pagination');
+        $this->load->library('doctrine');
+		$this->load->library('pathology/GetAllCollectionListService');
+		
+		// Pagination
+        $this->load->library('pagination');
+        $offset = $this->input->get('per_page');
+        $limit = $this->settings_lib->item('site.list_limit');
+		
+				
+		$src_diagnosis['collection_id'] 	= $this->input->post('collection_id'); 
+		$src_diagnosis['patient_id'] 		= $this->input->post('diagnosis_patient_id'); 
+		$src_diagnosis['patient_name'] 		= $this->input->post('diagnosis_patient_name');	
+		$src_diagnosis['contact_no'] 		= $this->input->post('diagnosis_contact_no'); 
+		$src_diagnosis['collection_date']   = $this->input->post('collection_date');
+		
+		
+		//=========== Get Collection List ==========
+		
+		$getDiagnosisCLObj 	= new GetAllCollectionListService($this);		
+		$records 			= $getDiagnosisCLObj	
+												->setCollectionId		($src_diagnosis['collection_id'])
+												->setPatientNo		($src_diagnosis['patient_id'])
+												->setPatientName		($src_diagnosis['patient_name'])
+												->setContactNo		($src_diagnosis['contact_no'])
+												->setTransactionType(1)  // 1=Collection
+												->setCollectionSource(3) // 3=Diagnosis
+												->setCollectionDate		($src_diagnosis['collection_date'])														
+												->setLimit($limit)
+												->setOffset($offset)
+												->execute();
+		
+		$total 				= $getDiagnosisCLObj->getCount();
+
+		$this->pager['base_url'] 			= current_url() .'?';
+		$this->pager['total_rows'] 			= $total;
+		$this->pager['per_page'] 			= $limit;
+		$this->pager['page_query_string']	= TRUE;
+
+		$this->pagination->initialize($this->pager);
+		
+		$sendData = array(
+			'records' 		=> $records,
+			'src_diagnosis' => $src_diagnosis
+		);
+				
+		Template::set('sendData', $sendData);		
+		Template::set('toolbar_title', lang("path_collection_View"));		
+		Template::set_view('transaction/all_transaction_list');
+		
+		Template::render();
+    }
+	
+}

@@ -1,0 +1,411 @@
+<?php
+	//extract($data);	
+	$validation_errors = validation_errors();
+	if ($validation_errors) :
+?>
+	<div class="alert alert-block alert-error fade in">
+	<a class="close" data-dismiss="alert">&times;</a>
+	<h4 class="alert-heading">Please fix the following errors:</h4>
+	<?php echo $validation_errors; ?>
+	</div>
+<?php
+	endif;
+	if (isset($employee_details))
+	{
+		$employee_details = (array) $employee_details;
+	}
+	$id = isset($employee_details['id']) ? $employee_details['id'] : '';
+
+?>
+	<div class="box box-primary">
+<?php echo form_open_multipart($this->uri->uri_string(), 'role="form", class="form-horizontal", enctype="multipart/form-data"'); ?>
+
+<div class="row">
+	<fieldset style="padding-left: 20px;">
+		<legend>Personal Info</legend>
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">		
+		<!-- -----------Employee Name ---------------- --> 					
+		<div class="form-group <?php echo form_error('EMP_NAME') ? 'error' : ''; ?>">
+			<label><?php echo lang('hrm_employee_full_name').lang('bf_form_label_required');?></label>
+			<input type='text' class="form-control" name='hrm_employee_name' id='hrm_employee_name' value="<?php echo set_value('EMP_NAME', isset($employee_details['EMP_NAME']) ? $employee_details['EMP_NAME'] : ''); ?>" required=""  maxlength="100"  tabindex="1" />
+			<span class='help-inline'><?php echo form_error('EMP_NAME'); ?></span>
+		</div>	
+	</div>
+  
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+		<!-- ----------- Employee Father_name ---------------- --> 
+		<div class="form-group <?php echo form_error('EMP_FATHER_NAME') ? 'error' : ''; ?>">
+			<label><?php echo lang('hrm_employee_father').lang('bf_form_label_required');?></label>
+			<input type='text' class="form-control" name='hrm_employee_father' id='hrm_employee_father'  value="<?php echo set_value('employee_father', isset($employee_details['EMP_FATHER_NAME']) ? $employee_details['EMP_FATHER_NAME'] : ''); ?>" required="" maxlength="100" tabindex="3"/>
+			<span class='help-inline'><?php echo form_error('EMP_FATHER_NAME'); ?></span>
+		</div>
+	</div>
+
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">		
+		<!-- ----------- Employee Mother_name ---------------- --> 					
+		<div class="form-group <?php echo form_error('EMP_MOTHER_NAME') ? 'error' : ''; ?>">
+			<label><?php echo lang('hrm_employee_mother').lang('bf_form_label_required');?></label>
+			<input type='text' class="form-control" name='hrm_employee_mother' id='hrm_employee_mother' value="<?php echo set_value('EMP_MOTHER_NAME', isset($employee_details['EMP_MOTHER_NAME']) ? $employee_details['EMP_MOTHER_NAME'] : ''); ?>" required=""  maxlength="100" tabindex="5"/>
+			<span class='help-inline'><?php echo form_error('EMP_MOTHER_NAME'); ?></span>
+		</div>	
+	</div>
+  
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+		<!-- ----------- Date of Birth --------------- -->
+		<div class="form-group <?php echo form_error('BIRTH_DATE') ? 'error' : ''; ?>">						
+			<label><?php echo lang('hrm_employee_birth_day').lang('bf_form_label_required');?></label>
+			<input type="text" class="form-control datepickerCommon" name="hrm_employee_birth_day" id="hrm_employee_birth_day" value="<?php echo set_value('BIRTH_DATE', isset($employee_details['BIRTH_DATE']) ? $employee_details['BIRTH_DATE'] : '');?>" title="<?php e(lang('hrm_employee_birth_day'));?>" required="" tabindex="7"/>
+		</div>	
+	</div>
+	
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+		<!-- ----------- Birth Place --------------- -->
+		<div class="form-group <?php echo form_error('BIRTH_PLACE') ? 'error' : ''; ?>">
+			<label><?php echo lang('hrm_employee_birth_place');?></label>
+			<input type='text' class="form-control" name='hrm_employee_birth_place' id='hrm_employee_birth_place'  maxlength="30" value="<?php echo set_value('BIRTH_PLACE', isset($employee_details['BIRTH_PLACE']) ? $employee_details['BIRTH_PLACE'] : ''); ?>"  tabindex="8"/>
+			<span class='help-inline'><?php echo form_error('BIRTH_PLACE'); ?></span>
+		</div>
+	</div>
+	
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+		<!-- ----------- Gender-------------------- -->
+		<div class="form-group <?php echo form_error('GENDER') ? 'error' : ''; ?>">						
+			<label><?php echo lang('hrm_employee_sex').lang('bf_form_label_required');?></label>
+			<select name="hrm_employee_sex" id="hrm_employee_sex" class="form-control"  required="" tabindex="10">
+			   <option value=""><?php echo lang('bf_msg_selete_one');?></option>
+			   <?php 
+					foreach($gender_list as $key => $val)
+					{
+						echo "<option value='".$key."'";
+						if(isset($employee_details['GENDER']))
+						{
+							if($employee_details['GENDER']==$key){ echo "selected";}
+						}
+							echo ">".$val."</option>";
+					}
+				?>
+			</select>
+			<span class='help-inline'><?php echo form_error('GENDER'); ?></span>						
+		</div>		
+	</div>
+  
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+		<!-- ----------- Blood Group --------------- -->
+		<div class="form-group <?php echo form_error('EMP_BLOOD_GROUP') ? 'error' : ''; ?>">						
+			<label><?php echo lang('hrm_blood_group');?></label>
+			<select class="form-control" name="hrm_blood_group" id="hrm_blood_group" tabindex="11">
+			   <option value="0"><?php echo lang('bf_msg_selete_one');?></option>
+			   <?php 
+					foreach($blood_group as $key => $val)
+					{
+						echo "<option value='".$key."'";
+						
+						if(isset($employee_details['EMP_BLOOD_GROUP']) )
+						{
+							if($employee_details['EMP_BLOOD_GROUP']==$key){ echo "selected ";}
+						}
+							echo ">".$val."</option>";
+					}
+				?>
+			</select>
+			<span class='help-inline'><?php echo form_error('EMP_BLOOD_GROUP'); ?></span>					
+		</div>		
+	</div>
+	
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+		<!-- -----------Marital Status------------- --> 
+		<div class="form-group <?php echo form_error('MARITAL_STATUS') ? 'error' : ''; ?>">
+			<label><?php echo lang('hrm_employee_marital_status').lang('bf_form_label_required');?></label>
+			<select class="form-control" name="hrm_employee_marital_status" id="hrm_employee_marital_status"  required="" tabindex="12">
+				<option value=""><?php echo lang('bf_msg_selete_one');?></option>
+				<?php 
+					foreach($marital_status as $key => $val)
+					{
+						echo "<option value='".$key."'";
+						
+						if(isset($employee_details['MARITAL_STATUS']))
+						{
+							if($employee_details['MARITAL_STATUS']==$key){ echo "selected ";}
+						}
+							echo ">".$val."</option>";
+					}
+				?>
+			 </select>
+			 <span class='help-inline'><?php echo form_error('MARITAL_STATUS'); ?></span>
+		</div>
+	</div>
+
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">		
+		<!-- ----------Religion ------------- --> 
+		<div class="form-group <?php echo form_error('RELIGION') ? 'error' : ''; ?>">						
+			<label><?php echo lang('hrm_employee_religion').lang('bf_form_label_required');?></label>
+			<select class="form-control" name="hrm_employee_religion" id="hrm_employee_religion"  required="" tabindex="13" required="">
+			   <option value="0"><?php echo lang('bf_msg_selete_one');?></option>
+			   <?php 
+					foreach($religion as $key => $val)
+					{
+						echo "<option value='".$key."'";
+						
+						if(isset($employee_details['RELIGION']) )
+						{
+							if($employee_details['RELIGION']==$key){ echo "selected ";}
+						}
+							echo ">".$val."</option>";
+					}
+				?>
+			</select>
+			<span class='help-inline'><?php echo form_error('RELIGION'); ?></span>					
+		</div>
+	</div>
+	
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+		<!-- ----------- Nationality ---------------- --> 
+		<div class="form-group <?php echo form_error('NATIONALITY') ? 'error' : ''; ?>">
+			<label><?php echo lang('hrm_employee_nationality')
+			;?></label>
+			<select name="hrm_employee_nationality" id="hrm_employee_nationality" class="form-control"  tabindex="14">
+				<option value=""><?php echo lang('bf_msg_selete_one');?></option>
+					<?php 
+						foreach($nationality as $key => $val)
+						{
+							echo "<option value='".$key."'";
+							
+							if(isset($employee_details['NATIONALITY']))
+							{
+								if($employee_details['NATIONALITY']==$key){ echo "selected ";}
+							}
+							echo ">".$val."</option>";
+						}
+					?>
+			 </select>
+			 <span class='help-inline'><?php echo form_error('NATIONALITY'); ?></span>
+		</div>	
+	</div>
+  
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+		<!-- ---------- National Id ---------------- --> 
+		<div class="form-group <?php echo form_error('NATIONAL_ID') ? 'error' : ''; ?>">
+			<label><?php echo lang('hrm_employee_national_id').lang('bf_form_label_required');?><span id="checkNationalid" style="color:#F00; font-size:12px;"></span></label>
+			<input type='text' class="form-control phonenumber" name='hrm_employee_national_id' id='hrm_employee_national_id' value="<?php echo set_value('NATIONAL_ID', isset($employee_details['NATIONAL_ID']) ? $employee_details['NATIONAL_ID'] : ''); ?>" required="" maxlength="30" tabindex="15"  onblur="nationalidCheck()"/>
+			<span class='help-inline'><?php echo form_error('NATIONAL_ID'); ?></span>
+		</div>	
+	</div>
+	<!-- Employee ID -->
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+		<!-- ----------- Employee Father_name ---------------- --> 
+		<div class="form-group <?php echo form_error('EMPLOYEE_ID') ? 'error' : ''; ?>">
+			<label><?php echo 'Employee id'.lang('bf_form_label_required');?></label>
+			<input type='text' class="form-control" name='employee_id' id='employee_id'  value="<?php echo set_value('employee_id', isset($employee_details['EMPLOYEE_ID']) ? $employee_details['EMPLOYEE_ID'] : ''); ?>" required="" maxlength="100" tabindex="3"/>
+			<span class='help-inline'><?php echo form_error('EMPLOYEE_ID'); ?></span>
+		</div>
+	</div>
+	
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+		<!-- -----------Employee Type---------------- --> 
+		<div class="form-group <?php echo form_error('EMP_TYPE') ? 'error' : ''; ?>">
+			<label><?php echo lang('hrm_employee_type').lang('bf_form_label_required');?></label>
+			<select name="hrm_employee_type" id="hrm_employee_type" class="form-control" required="" tabindex="16">
+				<option value=""><?php echo lang('bf_msg_selete_one');?></option>
+					<?php 
+						foreach($emp_type as $val)
+						{
+							echo "<option value='".$val->id."'";
+							
+							if(isset($employee_details['EMP_TYPE']) )
+							{
+								if($employee_details['EMP_TYPE']==$val->id){ echo "selected ";}
+							}
+							echo ">".$val->emp_type."</option>";
+						}
+					?>
+			</select>
+			<span class='help-inline'><?php echo form_error('EMP_TYPE'); ?></span>
+		</div>
+	</div>
+
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+		<!-- -----------Employee Job Nature---------------- --> 
+		<div class="form-group <?php echo form_error('EMP_JOB_NATURE') ? 'error' : ''; ?>">
+			<label><?php echo lang('hrm_employee_job_nature').lang('bf_form_label_required');?></label>
+			<select name="hrm_employee_job_nature" id="hrm_employee_job_nature" class="form-control" required="" tabindex="17">
+				<option value=""><?php echo lang('bf_msg_selete_one');?></option>
+					<?php 
+						foreach($job_nature as $key => $val)
+						{
+							echo "<option value='".$key."'";
+							
+							if(isset($employee_details['EMP_JOB_NATURE']) )
+							{
+								if($employee_details['EMP_JOB_NATURE']==$key){ echo "selected ";}
+							}
+							echo ">".$val."</option>";
+						}
+					?>
+			</select>
+			<span class='help-inline'><?php echo form_error('EMP_JOB_NATURE'); ?></span>
+		</div>
+	</div>
+	
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+		<!-- ----------- Department ---------------- --> 
+		<div class="form-group <?php echo form_error('EMP_DEPARTMENT') ? 'error' : ''; ?>">
+			<label><?php echo lang('employee_emp_department').lang('bf_form_label_required');?></label>
+			<select name="employee_emp_department" id="employee_emp_department" class="form-control" required="" tabindex="18">
+				<option value=""><?php echo lang('bf_msg_selete_one');?></option>
+					<?php 
+						foreach($department_list as $department)
+						{
+							echo "<option value='".$department->dept_id."'";
+							
+							if(isset($employee_details['EMP_DEPARTMENT']))
+							{
+								if($employee_details['EMP_DEPARTMENT']==$department->dept_id){ echo "selected ";}
+							}
+							echo ">".$department->department_name."</option>";
+						}
+					?>
+			 </select>
+			 <span class='help-inline'><?php echo form_error('EMP_DEPARTMENT'); ?></span>
+		</div>
+	</div>
+	
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+		<!-- ----------- Designation ---------------- --> 
+		<div class="form-group <?php echo form_error('EMP_DESIGNATION') ? 'error' : ''; ?>">
+			<label><?php echo lang('hrm_employee_designation').lang('bf_form_label_required');?></label>
+			<select name="hrm_employee_designation" id="hrm_employee_designation" class="form-control" required="" tabindex="19">
+				<option value=""><?php echo lang('bf_msg_selete_one');?></option>
+					<?php 
+						foreach($designation_list as $deignation)
+						{
+							echo "<option value='".$deignation->DESIGNATION_ID."'";
+							
+							if(isset($employee_details['EMP_DESIGNATION']))
+							{
+								if($employee_details['EMP_DESIGNATION']==$deignation->DESIGNATION_ID){ echo "selected ";}
+							}
+							echo ">".$deignation->DESIGNATION_NAME."</option>";
+						}
+					?>
+			 </select>
+			 <span class='help-inline'><?php echo form_error('EMP_DESIGNATION'); ?></span>
+		</div>
+	</div>
+	
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+		<!-- ---------- Employee Grade--------------- --> 
+		<div class="form-group <?php echo form_error('EMP_GRADE') ? 'error' : ''; ?>">
+			<label><?php echo lang('hrm_employee_grade').lang('bf_form_label_required');?></label>
+			<select name="hrm_employee_grade" id="hrm_employee_grade" class="form-control" required="" tabindex="20">
+				<option value=""><?php echo lang('bf_msg_selete_one');?></option>
+					<?php 
+						foreach($grade_list as $grade)
+						{
+							echo "<option value='".$grade->GRADE_ID."'";
+							
+							if(isset($employee_details['EMP_GRADE']))
+							{
+								if($employee_details['EMP_GRADE']==$grade->GRADE_ID){ echo "selected ";}
+							}
+							echo ">".$grade->GRADE_NAME."</option>";
+						}
+					?>
+			 </select>
+			 <span class='help-inline'><?php echo form_error('EMP_GRADE'); ?></span>
+		</div>	
+	</div>
+		
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+		<!-- ----------- Joining Date---------------- -->						
+		<div class="form-group <?php echo form_error('JOINNING_DATE') ? 'error' : ''; ?>">						
+			<label><?php echo lang('employee_joining_date').lang('bf_form_label_required');?></label>
+			<input type="text" class="form-control datepickerCommon" name="employee_joining_date" id="employee_joining_date" value="<?php echo set_value('JOINNING_DATE', isset($employee_details['JOINNING_DATE']) ? $employee_details['JOINNING_DATE'] : '');?>" title="<?php e(lang('employee_joining_date'));?>" required="" tabindex="21"/>
+			<span class='help-inline'><?php echo form_error('JOINNING_DATE'); ?></span>
+		</div>	
+	</div>
+
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+		<!-- ----------- Confirmation Date---------------- --> 						
+		<div class="form-group <?php echo form_error('JOB_CONFIRM_DATE') ? 'error' : ''; ?>">						
+			<label><?php echo lang('employee_confirmarion_date').lang('bf_form_label_required');?></label>
+			<input type="text" class="form-control datepickerCommon" name="employee_confirmarion_date" id="employee_confirmarion_date" value="<?php echo set_value('JOB_CONFIRM_DATE', isset($employee_details['JOB_CONFIRM_DATE']) ? $employee_details['JOB_CONFIRM_DATE'] : '');?>"  title="<?php e(lang('JOB_CONFIRM_DATE'));?>" required="" tabindex="22"/>
+			<span class='help-inline'><?php echo form_error('JOB_CONFIRM_DATE'); ?></span>
+		</div>
+	</div>
+
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+		<!-- ----------Passport Number---------------- --> 
+		<div class="form-group <?php echo form_error('PASSPORT_NO') ? 'error' : ''; ?>">
+			<div id="checkPasspost" style="color:#F00; font-size:14px;"></div>
+			<label><?php echo lang('hrm_employee_passport_no');?></label>
+			<input class="form-control" id='hrm_employee_passport_no'  name='hrm_employee_passport_no' type='text'  maxlength="30" value="<?php echo set_value('PASSPORT_NO', isset($employee_details['PASSPORT_NO']) ? $employee_details['PASSPORT_NO'] : ''); ?>" tabindex="23" onblur="passportCheck()"/>
+			<span class='help-inline'><?php echo form_error('PASSPORT_NO'); ?></span>
+		</div>
+	</div>
+
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+		<!-- ----------Driving Licence------------------> 
+		<div class="form-group <?php echo form_error('DRIVING_LICENCE') ? 'error' : ''; ?>">
+			<div id="checkDrivingLicence" style="color:#F00; font-size:14px;"></div>
+			<label><?php echo lang('hrm_employee_driving_licence');?></label>
+			<input type='text' class="form-control" id='hrm_employee_driving_licence'  name='hrm_employee_driving_licence' value="<?php echo set_value('DRIVING_LICENCE', isset($employee_details['DRIVING_LICENCE']) ? $employee_details['DRIVING_LICENCE'] : ''); ?>" maxlength="30"  tabindex="24" onblur="drivingLicencetCheck()"/>
+			<span class='help-inline'><?php echo form_error('DRIVING_LICENCE'); ?></span>
+		</div>
+	</div>
+	
+	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+		<!-- ----------Driving Licence------------------> 
+		<div class="form-group <?php echo form_error('EMP_DESIGNATION_TWO') ? 'error' : ''; ?>">
+			<div id="checkDrivingLicence" style="color:#F00; font-size:14px;"></div>
+			<label>Qualification(If Doctor)</label>
+			<input type='text' class="form-control" id='emp_designation_two'  name='emp_designation_two' value="<?php echo set_value('EMP_DESIGNATION_TWO', isset($employee_details['EMP_DESIGNATION_TWO']) ? $employee_details['EMP_DESIGNATION_TWO'] : ''); ?>" maxlength="30"  tabindex="24" onblur="drivingLicencetCheck()"/>
+			<span class='help-inline'><?php echo form_error('EMP_DESIGNATION_TWO'); ?></span>
+		</div>
+	</div>
+	
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+		<!-- ----------- Employee Status---------------- --> 
+		<div class="form-group <?php echo form_error('STATUS') ? 'error' : ''; ?>">	
+			<label><?php echo lang('employee_status').lang('bf_form_label_required');?></label>
+			<select name="employee_status" id="employee_status" class="form-control" required="" tabindex="26">
+				<?php
+					foreach($status as $vkey => $vval)
+					{	                              
+						echo "<option value='".$vkey."'";
+					
+						if(isset($employee_details['STATUS']))
+						{									
+							if($employee_details['STATUS']==$vkey){ echo "selected";}									
+						}								
+						echo ">".$vval."</option>";
+					}
+					?>
+			 </select>
+			<span class='help-inline'><?php echo form_error('STATUS'); ?></span>						
+		</div>	
+	</div>
+	
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+		<!-- ----------Employee photo---------------- --> 
+		<div class="form-group <?php echo form_error('EMP_PHOTO') ? 'error' : ''; ?>">						
+			<label><?php echo lang('hrm_employee_photo');?></label>
+			<input type='file'  id='hrm_employee_photo' name='hrm_employee_photo' value="<?php echo set_value('EMP_PHOTO', isset($employee_details['EMP_PHOTO']) ? $employee_details['EMP_PHOTO'] : ''); ?>"  tabindex="27"/>
+			<span class='help-inline'><?php echo form_error('EMP_PHOTO'); ?></span>						
+		</div>
+	</div>
+	</fieldset>
+
+<div class="row">	
+		<fieldset>			
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"> 
+			
+			<input type="submit" name="save" class="btn btn-primary btn-sm" value="<?php echo lang('bf_action_save').' '.lang('bf_action_next'); ?>"/>	
+			<?php echo lang('bf_or'); ?>
+			<?php echo anchor(SITE_AREA .'', lang('bf_action_cancel'), 'class="btn btn-default btn-sm"'); ?>
+			
+	</div>	
+	</fieldset>
+	</div>					
+</div>	
+<?php echo form_close(); ?>
+</div>

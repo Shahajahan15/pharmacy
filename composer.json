@@ -1,0 +1,26 @@
+{
+    "name": "app/hospital",
+    "description": "CodeIgniter-based web application development.",
+    "version": "0.8.3",
+    "type": "project",
+    "homepage": "http://worldtechbd.org",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bilas",
+            "email": "bilas016@gmail.com",
+            "homepage": "http://worldtechbd.org",
+            "role": "Project Starter and Lead"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Bonfire\\": "system",
+            "App\\Traits\\": "application/traits"
+        }
+    },
+    "require": {
+        "php": ">=5.3.0",
+		"duncan3dc/blade": "3.4.*"
+    }
+}

@@ -1,0 +1,43 @@
+@media screen and (max-width: 560px) {
+    #logo-img {
+        max-width: 220px !important;
+        margin: 0 auto;
+        background-color: #1F78D1;
+    }
+}
+
+/* Brownish */
+/*
+.skin-blue .logo {
+    background-color: #755f21;
+}
+.skin-blue .logo:hover {
+    background: #755f22;
+}
+.skin-blue .navbar {
+    background-color: #6d581d;
+}
+.skin-blue .sidebar {
+    background: rgba(117, 87, 3, 0.7);
+}
+.skin-blue .sidebar a {
+    color : #000;
+}
+*/
+
+/* Sky Blueish */
+.skin-blue .sidebar {
+    background: #b7cfe4;
+}
+.skin-blue header {
+    background-color: #1F78D1;
+}
+.skin-blue .logo {
+    background-color: #1F78D1;
+}
+.skin-blue .logo:hover {
+    background-color: #1F78E9;
+}
+.skin-blue .navbar {
+    background-color: #1F78F1;
+}

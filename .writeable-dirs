@@ -1,0 +1,26 @@
+-- Writable DIRS
+public/assets/cache
+public/assets/images/employee_img
+application/cache
+application/logs
+
+========================================================================
+-- Command in CENTOS (SElinux)
+
+# Ownership
+sudo chown nginx:nginx -R /usr/share/nginx/html/hospital
+
+# File Permissions
+find /usr/share/nginx/html/hospital -type f -exec chmod 0644 {} \;
+
+# Dir Permissions
+find /usr/share/nginx/html/hospital -type d -exec chmod 0755 {} \;
+
+# SELinux serve files off Nginx, recursive
+sudo chcon -t httpd_sys_content_t /usr/share/nginx/html/hospital -R
+
+# Allow Write only to specific dir
+sudo chcon -t httpd_sys_rw_content_t /usr/share/nginx/html/hospital/public/assets/cache -R
+sudo chcon -t httpd_sys_rw_content_t /usr/share/nginx/html/hospital/public/assets/images/employee_img -R
+sudo chcon -t httpd_sys_rw_content_t /usr/share/nginx/html/hospital/application/cache -R
+sudo chcon -t httpd_sys_rw_content_t /usr/share/nginx/html/hospital/application/logs -R

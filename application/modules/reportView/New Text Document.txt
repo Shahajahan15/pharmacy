@@ -1,0 +1,29 @@
+<!--Start Report-->
+				  <li class="treeview">
+                      <a href="#"><i class="fa fa-angle-double-right"></i>Report</a>
+                    	<ul class="treeview-menu">
+                            <li><a href="<?php echo site_url(); ?>/admin/transaction_report/reportView/collectionList"><i class="fa fa-angle-double-right"></i>Transaction List</a></li>
+							
+                            <li><a href="<?php echo site_url(); ?>/admin/transaction_report/reportView/show_collection"><i class="fa fa-angle-double-right"></i>Collection List</a></li>
+							
+							 <li><a href="<?php echo site_url(); ?>/admin/transaction_report/reportView/show_refund"><i class="fa fa-angle-double-right"></i>Refund List</a></li>
+							 
+                            <li><a href="<?php echo site_url(); ?>/admin/transaction_report/reportView/show_commission"><i class="fa fa-angle-double-right"></i>Commission List</a></li>
+							
+                            <li><a href="<?php echo site_url(); ?>/admin/transaction_report/reportView/show_discount"><i class="fa fa-angle-double-right"></i>Discount List</a></li>
+							
+                            <li><a href="<?php echo site_url(); ?>/admin/transaction_report/reportView/show_payment"><i class="fa fa-angle-double-right"></i>Payment List</a></li>
+							
+                            <li><a href="<?php echo site_url(); ?>/admin/transaction_report/reportView/show_payment"><i class="fa fa-angle-double-right"></i>User Wise Collection</a></li>
+							
+                            <li><a href="<?php echo site_url(); ?>/admin/transaction_report/reportView/show_payment"><i class="fa fa-angle-double-right"></i>Department Wise Collection</a></li>
+							
+                            <li><a href="<?php echo site_url(); ?>/admin/transaction_report/reportView/show_doctor_wise"><i class="fa fa-angle-double-right"></i>Doctor Wise Collection</a></li>
+							
+							
+							
+							<li><a href="<?php echo site_url(); ?>/admin/transaction_moneyreceipt_report/reportView/show_list"><i class="fa fa-angle-double-right"></i>Money Receipt Wise Collection</a></li>
+                        </ul>
+                  </li>
+				
+				<!--End Report-->

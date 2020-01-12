@@ -1,0 +1,31 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+//======= Group Setup =================
+$lang['product_pharmacy_view']				= 'View Product List';
+$lang['pharmacy_category_name']				= 'Category Name';
+$lang['pharmacy_company_name']				= 'Company Name';
+$lang['pharmacy_sub_category_name']				= 'Sub Category Name';
+$lang['pharmacy_product_name']				= 'Product Name';
+$lang['pharmacy_purchase_price']				= 'Purchase Price';
+$lang['pharmacy_sale_price']				= 'Sales Price';
+$lang['pharmacy_shelf']				= 'Shelf';
+$lang['pharmacy_unit']				= 'Unit';
+$lang['pharmacy_reorder']				= 'Re-Order Level';
+$lang['pharmacy_lead_time']				= 'Lead Time';
+$lang['pharmacy_deprecitation']				= 'Depreciation(%)';
+$lang['pharmacy_yearly_indent']				= 'Yearly Indent';
+$lang['pharmacy_account_head']				= 'Account Head';
+$lang['pharmacy_free']				= 'Free';
+$lang['pharmacy_product_create']				= 'Create New Product';
+$lang['pharmacy_product_update']				= 'Update Product';
+$lang['pharmacy_product_status']				= 'Status';
+$lang['pharmacy_opening_price'] = 'Opening Price';
+$lang['pharmacy_opening_balance'] = 'Opening Balance';
+
+$lang['bf_action_new']				= 'New';
+$lang['select_a_one']				= '-- Select a one --';
+$lang['bf_msg_create_success']			= 'record(s) successfully created.';
+$lang['bf_msg_edit_success']			= 'record(s) successfully update.';
+$lang['product_delete_success']			= 'record(s) successfully deleted.';
+$lang['product_delete_failure']= 'There was a problem creating the product: ';
+$lang['bf_msg_create_failure']= 'There was a problem creating the Category: ';
+$lang['bf_msg_records_not_found']= 'Recode No Found';

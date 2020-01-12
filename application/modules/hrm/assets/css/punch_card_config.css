@@ -1,0 +1,50 @@
+
+.all_input_type
+{
+	width:90%;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.all_input_type:focus { 
+   -webkit-box-shadow: 0px 0px 7px #4195fc;
+    -moz-box-shadow: 0px 0px 7px #4195fc;
+    box-shadow: 0px 0px 7px #4195fc; 
+	
+}
+  
+
+.vertical_line
+{
+	height:200px;
+	width:1px;
+	background:#acd;
+	display:inline-block;
+	float:left;  
+   
+}
+
+
+@media only screen and (max-width: 768px)  {
+  
+.vertical_line
+{
+	visibility: hidden;
+    clear: both; 
+	display: none;
+}
+
+}
+
+.leftGroup
+{
+	margin-left:-10px
+	;margin-right:-5px;
+}
+
+.rightGroup
+{
+	margin-left:10px;
+	margin-right:-5px;
+
+}

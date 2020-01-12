@@ -1,0 +1,48 @@
+@media (min-width: 1200px) {
+    .col-lg-2 {
+        width: 18.66666667%;
+    }
+}
+
+.white-box {
+    background: #e0e0e0; /*#ffffff;*/
+    padding: 25px 10px 25px 10px;
+    margin: 5px 0px 15px 0px;
+}
+
+.tile-label-dash {
+    color: #777;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.r-icon-stats i {
+    width: 66px;
+    height: 66px;
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 24px;
+    display: inline-block;
+    border-radius: 100%;
+    vertical-align: top;
+    background: #01c0c8;
+}
+
+.r-icon-stats .bodystate {
+    padding-left: 5px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.content {
+    background: #edf1f5;
+}
+
+.no-padding-right {
+    padding-right: 0px;
+}
+
+canvas {
+    height: 410px;
+}
