@@ -1,0 +1,15 @@
+
+bf_sub_customer = table
+
+Common.php = C:\xampp\htdocs\pharmacy_v1\application\modules\report\controllers
+Main_pharmacy_sale.php = C:\xampp\htdocs\pharmacy_v1\application\modules\pharmacy\controllers
+
+Main_pharmacy_sale_list_model.php = C:\xampp\htdocs\pharmacy_v1\application\modules\pharmacy\models
+
+sub_customer = C:\xampp\htdocs\pharmacy_v1\application\modules\pharmacy\views
+create.php  = C:\xampp\htdocs\pharmacy_v1\application\modules\pharmacy\views\main_pharmacy
+list.php = C:\xampp\htdocs\pharmacy_v1\application\modules\pharmacy\views\main_pharmacy_sale_list
+
+main_pharmacy_sale.js  = C:\xampp\htdocs\pharmacy_v1\application\modules\pharmacy\assets\js
+global.js = C:\xampp\htdocs\pharmacy_v1\public\themes\admin\js
+

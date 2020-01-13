@@ -1,0 +1,19 @@
+bf_sub_customer = table
+
+Controller :  
+Main_pharmacy_sale.php = pharmacy_v1\application\modules\pharmacy\controllers
+Pharmacy_setup.php = pharmacy_v1\application\modules\pharmacy\controllers
+
+Model:  
+Pharmacy_sales_dtls_model.php =  pharmacy_v1\application\modules\pharmacy\models
+Pharmacy_sales_mst_model.php =  pharmacy_v1\application\modules\pharmacy\models
+Pharmacy_setup_model.php = pharmacy_v1\application\modules\pharmacy\models
+
+View :    pharmacy-v1\application\modules\pharmacy\views\main_pharmacy\sale_print
+View :    pharmacy-v1\application\modules\pharmacy\views\pharmacy_setup\
+View :    pharmacy-v1\application\modules\pharmacy\views\sub_pharmacy\sale_print
+
+Js : 
+global.js  =  pharmacy-v1\public\themes\admin\js
+
+lang: pharmacy-v1\application\modules\pharmacy\language\english
